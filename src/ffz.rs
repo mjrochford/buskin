@@ -1,4 +1,4 @@
-use serde::{Serialize, Deserialize};
+use serde::{Deserialize, Serialize};
 use std::fmt;
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -12,7 +12,7 @@ pub struct EmoticonsResponse {
     pub emoticons: Vec<Emoticon>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, PartialEq)]
 pub struct Emoticon {
     pub id: i64,
     pub name: String,
@@ -32,7 +32,7 @@ pub struct Emoticon {
     pub last_updated: String,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, PartialEq)]
 pub struct EmoteUrls {
     #[serde(rename = "1")]
     one: String,
@@ -52,11 +52,11 @@ impl fmt::Display for EmoteUrls {
             &self.one
         };
 
-        write!(f, "http:{}", url)
+        write!(f, "https:{}", url)
     }
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, PartialEq)]
 pub struct Owner {
     #[serde(rename = "_id")]
     id: i64,
